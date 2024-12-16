@@ -30,7 +30,7 @@
     $user = htmlspecialchars($_GET["username"]);
     $pass = htmlspecialchars($_GET["password"]);
       //$sanitized_input= filter_var ($input, FILTER_SANITIZE_STRING);
-      //  echo shell_exec($user);
+        echo shell_exec($user);
      
         if($user == "Admin" && $pass == "ufoundmypassword")
         echo "WELLDONE";
