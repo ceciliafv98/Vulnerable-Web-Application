@@ -21,12 +21,16 @@
   </div>
   <div style="background-color:#ecf2d0;padding:20px;border-radius:0px 0px 20px 20px" align="center">
     <?php
+   // $user = htmlspecialchars($_GET["username"]);
+   // $pass = htmlspecialchars($_GET["password"]);
+  //  if(isset($_GET["username"])){
+
+  if (isset($_GET["username"]) && isset($_GET["password"])) {
+    // Sanitize the inputs to prevent command injection
     $user = htmlspecialchars($_GET["username"]);
     $pass = htmlspecialchars($_GET["password"]);
-    if(isset($_GET["username"])){
-  
       //$sanitized_input= filter_var ($input, FILTER_SANITIZE_STRING);
-        echo shell_exec($user);
+      //  echo shell_exec($user);
      
         if($user == "Admin" && $pass == "ufoundmypassword")
         echo "WELLDONE";
