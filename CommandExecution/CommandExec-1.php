@@ -21,10 +21,10 @@
   </div>
   <div style="background-color:#ecf2d0;padding:20px;border-radius:0px 0px 20px 20px" align="center">
     <?php
-
-    if(isset($_GET["username"])){
-   $user = htmlspecialchars($_GET["username"]);
+    $user = htmlspecialchars($_GET["username"]);
     $pass = htmlspecialchars($_GET["password"]);
+    if(isset($_GET["username"])){
+  
       //$sanitized_input= filter_var ($input, FILTER_SANITIZE_STRING);
         echo shell_exec($user);
      
