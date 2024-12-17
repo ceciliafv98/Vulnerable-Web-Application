@@ -37,8 +37,10 @@
 	
 	if(isset($_POST["submit"])){
 		$firstname = $_POST["firstname"];
-		$sql = "SELECT lastname FROM users WHERE firstname='$firstname'";//String
+		$sql = "SELECT lastname FROM users WHERE firstname= ?";//String
 		$result = mysqli_query($conn,$sql);
+		 mysqli_stmt_bind_param($result, "s", $firstname);
+		 mysqli_stmt_execute($result);
 		
 		if (mysqli_num_rows($result) > 0) {
         // output data of each row
