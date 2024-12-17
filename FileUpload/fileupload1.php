@@ -9,7 +9,7 @@
       <button type="button" name="mainButton" onclick="location.href='fileupl.html';">Main Page</button>
 </div>
 
-<div align="center">
+<div align="center"> 
 <form action="" method="post" enctype="multipart/form-data">
    <br>
     <b>Select image : </b> 
