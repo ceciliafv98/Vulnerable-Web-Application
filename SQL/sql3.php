@@ -23,7 +23,7 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = getenv('MYSQL_SECURE_PASSWORD';
 	$db = "1ccb8097d0e9ce9f154608be60224c7c";
 
 	// Create connection
@@ -36,12 +36,14 @@
 	//echo "Connected successfully";
 	if(isset($_POST["submit"])){
 		$number = $_POST['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = '$number'"; //Is this same with the level 2?
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?"; //Is this same with the level 2?
 		$result = mysqli_query($conn,$query);
+		mysqli_stmt_bind_param($result, "s", $firstname);
+		 mysqli_stmt_execute($result);
 
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
-		    $message .= 'Whole query: ' . $query;
+		    $message .= 'Whole query: ' . htmlspecialchars($query);
 		    die($message);
 		}
 
