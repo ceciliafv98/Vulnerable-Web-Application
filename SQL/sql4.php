@@ -12,7 +12,7 @@
 	</div>
 
 	<div align="center">
-	<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" >
+	<form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" >
 		<p>Give me book's number and I give you book's name in my library.</p>
 		Book's number : <input type="text" name="number">
 		<input type="submit" name="submit" value="Submit">
@@ -27,7 +27,7 @@
 <?php
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = getenv('MYSQL_SECURE_PASSWORD');
 	$db = "1ccb8097d0e9ce9f154608be60224c7c";
 
 	// Create connection
@@ -49,12 +49,14 @@
 			exit;
 		}
 
-		$query = "SELECT bookname,authorname FROM books WHERE number = $number"; 
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?"; 
 		$result = mysqli_query($conn,$query);
-
+		 mysqli_stmt_bind_param($result, "s", $firstname);
+		 mysqli_stmt_execute($result);
+		
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
-		    $message .= 'Whole query: ' . $query;
+		    $message .= 'Whole query: ' . htmlspecialchars($query);
 		    die($message);
 		}
 
