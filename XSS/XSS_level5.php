@@ -21,7 +21,7 @@
 if (isset($_GET["username"])) {
     //$user = str_replace("<", "", $_GET["username"]);
 $user = htmlspecialchars($_GET["username"], ENT_QUOTES, 'UTF-8');
-    echo "Your name is ". $user;
+    echo "Your name is ". htmlspecialchars($user);
 }
  ?>
 
