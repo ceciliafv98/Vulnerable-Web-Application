@@ -11,7 +11,7 @@
       <button type="button" name="mainButton" onclick="location.href='xssmainpage.html';">Main Page</button>
     </div>
 <div align="center">
-<form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="form">
+<form method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="form">
    <p>Your name:<input type="text" name="username"></p>
    <input type="submit" name="submit" value="Submit">
 </form>
@@ -21,7 +21,7 @@
 if (isset($_GET["username"])) {
     //$user = str_replace("<", "", $_GET["username"]);
 $user = htmlspecialchars($_GET["username"], ENT_QUOTES, 'UTF-8');
-    echo "Your name is ". htmlspecialchars($user);
+    echo "Your name is ". $user;
 }
  ?>
 
