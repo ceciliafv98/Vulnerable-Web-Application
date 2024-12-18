@@ -20,19 +20,16 @@
 <?php
 
 // Check if image file is a actual image or fake image
-$target_dir = "uploads/";
-$file_name = basename($_FILES["file"]["name"]); 
-$target_file = $target_dir . $file_name;
+
 if(isset($_POST["submit"])) {
 	
-	//$target_dir = "uploads/";
-	//$target_file = $target_dir . basename($_FILES["file"]["name"]);
+	$target_dir = "uploads/";
+	$target_file = $target_dir . basename($_FILES["file"]["name"]);
 	
-   if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
-	    echo "File uploaded /uploads/".htmlspecialchars($file_name);
-   // echo "File uploaded /uploads/".$_FILES["file"]["name"];
-} else {
-	   echo "Error uploading file";
+   move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+	   
+    echo "File uploaded /uploads/". htmlspecialchars($_FILES["file"]["name"]);
+
    }
 ?>
 </body>
