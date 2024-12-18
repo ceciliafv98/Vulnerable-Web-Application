@@ -17,51 +17,33 @@
       <a href=lvl4.php?file=1.php><button>Button</button></a>
       <a href=lvl4.php?file=2.php><button>The Other Button!</button></a>
       </div>
-      <?php
-echo "</br></br>";
 
-// Verificar si 'file' está presente en la URL
-if (isset($_GET['file'])) {
-    
-    // Obtener el nombre del archivo de manera segura
-    $secure4 = $_GET['file'];
-    
-    // Lista de archivos permitidos
-    $allowed_files = ['archivo1.php', 'archivo2.php']; // Solo permitimos estos archivos
-    
-    // Verificamos si el archivo solicitado está en la lista de permitidos
-    if (in_array($secure4, $allowed_files)) {
-        
-        // Incluir el archivo
-        include($secure4);
 
-        // Mostrar el nombre del archivo de manera segura (prevención de XSS)
-        echo "<div align='center'><b><h5>" . htmlspecialchars($secure4, ENT_QUOTES, 'UTF-8') . "</h5></b></div>";
-    } else {
-        // Si el archivo no está permitido, mostrar un mensaje de error
-        echo "Este archivo no está permitido.";
-    }
-}
-?>
+     <?php     
+      $INCLUDE_ALLOW_LIST = [
+              home.php
+              dashboard.php
+              profile.php
+              settings.php
+         ];
 
-    //  <?php     
-      //  echo "</br></br>";
+      echo "</br></br>";
 
-       // if (isset( $_GET[ 'file' ])) 
-      //  {
-        //  $secure4 = $_GET[ 'file' ];
+       if (isset( $_GET[ 'file' ])) 
+        {
+          $secure4 = $_GET[ 'file' ];
          
-         //   if ($secure4!="1.php" && $secure4!="2.php") 
-         //   {
-        //      $secure4=substr($secure4, 0,-4);
-        //    }
+          if ($secure4!="1.php" && $secure4!="2.php") 
+          {
+            $secure4=substr($secure4, 0,-4);
+           }
             
-       //     if (isset($secure4)) 
-       //     {        
-        //      include($secure4);              
-        //    }
-       // }              
-     // ?>
+         if (isset($secure4) && in_array($secure4,  $INCLUDE_ALLOW_LIST)) 
+         {        
+           include($secure4);              
+       }
+      }              
+     ?>
    </body>
 </html>
 
