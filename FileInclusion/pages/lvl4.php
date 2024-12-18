@@ -21,10 +21,10 @@
 
      <?php     
       $INCLUDE_ALLOW_LIST = [
-              home.php
-              dashboard.php
-              profile.php
-              settings.php
+              "home.php",
+              "dashboard.php",
+              "profile.php",
+              "settings.php"
          ];
 
       echo "</br></br>";
